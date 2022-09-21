@@ -29,24 +29,24 @@
               <div class="row">
                 <div class="col-3 col-left pt-3">
                   <!-- list of todo lists go here -->
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Enter List Name" aria-describedby="button-addon2" id="new-list-name-input">
-                    <button class="btn btn-dark" type="button" id="button-addon2" onclick="addList()">+</button>
-                  </div>
-                  <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      A list item
-                      <span class="badge bg-dark rounded-pill"><i class="bi bi-trash"></i></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      A second list item
-                      <span class="badge bg-dark rounded-pill"><i class="bi bi-trash"></i></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      A third list item
-                      <span class="badge bg-dark rounded-pill"><i class="bi bi-trash"></i></span>
-                    </li>
-                  </ul>
+                    <form id="new-list-form" class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="Enter List Name" aria-describedby="button-addon2" id="new-list-input">
+                      <button class="btn btn-dark" type="submit" id="new-list-submit"">+</button>
+                    </form>
+                    <ul class="list-group" id="lists">
+                      <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+                        A list item
+                        <span class="badge bg-dark rounded-pill"><i class="bi bi-trash"></i></span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        A second list item
+                        <span class="badge bg-dark rounded-pill"><i class="bi bi-trash"></i></span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        A third list item
+                        <span class="badge bg-dark rounded-pill"><i class="bi bi-trash"></i></span>
+                      </li> -->
+                    </ul>
                 </div>
            
                 <div class="col-8 pt-2">
@@ -54,35 +54,36 @@
                   <!-- current todo list goes here -->
                   <h1>Test</h1>
                   <hr/>
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="New Todo Item"  aria-describedby="button-addon2">
-                    <button class="btn btn-dark" type="button" id="button-addon2">+</button>
-                  </div>
+                  <div class="tasks">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="New Todo Item"  aria-describedby="button-addon2">
+                      <button class="btn btn-dark" type="button" id="button-addon2">+</button>
+                    </div>
 
-                  <ul class="list-group">
-                    <li class="list-group-item">
-                      <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                      First checkbox
-                    </li>
-                    <li class="list-group-item">
-                      <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                      Second checkbox
-                    </li>
-                    <li class="list-group-item">
-                      <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                      Third checkbox
-                    </li>
-                    <li class="list-group-item">
-                      <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                      Fourth checkbox
-                    </li>
-                    <li class="list-group-item">
-                      <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                      Fifth checkbox
-                    </li>
-                </ul>
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                        First checkbox
+                      </li>
+                      <li class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                        Second checkbox
+                      </li>
+                      <li class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                        Third checkbox
+                      </li>
+                      <li class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                        Fourth checkbox
+                      </li>
+                      <li class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                        Fifth checkbox
+                      </li>
+                  </ul>
+                  </div>
                 </div>
-           
               </div>
             </div>
            </div>
