@@ -2,6 +2,9 @@
     const listForm = document.querySelector("#new-list-form")
     const listInput = document.querySelector("#new-list-input")
     const listContainer = document.querySelector("#lists");
+    const todoContainer = document.querySelector('#todoContainer')
+    const listTitle = document.querySelector('#listTitle')
+    const taskContainer = document.querySelector('#tasks')
 
     // we will be using local storage, this key will store the input data in the user's browser so when they
     // refresh the page it will still be up.
@@ -15,6 +18,13 @@
     //This is the list of task items from the left column
     // we're passing the local storage key, and then parse it form a string to an object or if nothing has been inputted we're going to use an empty array
     let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []
+
+    // Adding an event listener to the entire container, so that anytime we click on a list it will become "active"
+    listContainer.addEventListener('click', e => {
+        if (e.target.tagName.toLowerCase() === 'li'|| e.target.tagName.toLowercase() === 'span')
+        selectedListId = e.target.dataset.listId
+        saveAndRender()
+    })
 
 
    // Here is the button function, it also the page from refreshing when
@@ -41,30 +51,88 @@
     //these functions will save our list to the local storage
     function save() {
         localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists))
+        localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId)
     }
     function saveAndRender () {
         save()
         render()
     }
 
-    //renders the new list's HTML and classes in the left column
+    //the main render function, also calls on the renderList and renderTasks functions
     function render() {
         clearElement(listContainer)
-        lists.forEach (list => {
-            const listElement = document.createElement('li')
-            listElement.dataset.listID = list.id
-            listElement.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center")
-            listElement.innerHTML = `${list.name} <span class="badge bg-dark rounded-pill"><i class="bi bi-trash"></i></span></li>`
-            if (list.id === selectedListId) {
-                listElement.classList.add('active')
-            }
-            listContainer.appendChild(listElement)
+        renderLists()
+
+        const selectedList = lists.find(list => list.id === selectedListId)
+        if (selectedListId == null) {
+            todoContainer.style.visibility = 'hidden'
+        } else {
+            todoContainer.style.visibility = ''
+            listTitle.innerText = selectedList.name
+            clearElement(taskContainer)
+            renderTasks(selectedList)
+        }
+    }
+
+    //this function will be used to render the right column list of Tasks
+    function renderTasks(selectedList) {
+        selectedList.tasks.forEach (task => {
+            
         })
     }
+
+    //renders the new list's HTML and classes in the left column
+    //this clears everything and then rerenders it all, so it will always change the class
+    function renderLists() {
+    lists.forEach (list => {
+        //creating the li item
+        const listElement = document.createElement('li')
+        listElement.dataset.listId = list.id
+        listElement.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center")
+        listElement.innerHTML = `${list.name}`
+
+        // Creating a container for my buttons
+        const listActions = document.createElement('div')
+        listActions.classList.add("listActions")
+
+        // Creating the Edit Button
+        // const listEdit = document.createElement('span')
+        // listEdit.classList.add("badge", "bg-dark", "rounded-pill", "me-1")
+        // listEdit.innerHTML = `<i class="bi bi-pencil"></i>`
+
+        // Creating the Delete Button
+        const listDelete = document.createElement('span')
+        listDelete.classList.add("badge", "bg-dark", "rounded-pill")
+        listDelete.innerHTML = `<i class="bi bi-trash"></i>`
+
+        if (list.id === selectedListId) {
+            listElement.classList.add('active')
+        }
+
+        //appending li and button to container
+        listContainer.appendChild(listElement)
+        listElement.appendChild(listActions)
+        // listActions.appendChild(listEdit)
+        listActions.appendChild(listDelete)
+
+        //creating an EventListener for the edit action
+        // listEdit.addEventListener('click', () => {
+        //     listElement.removeAttribute("readonly")
+        //     listElement.focus();
+        // })
+
+        listDelete.addEventListener('click', e => {
+            lists = lists.filter(list => list.id !== selectedListId)
+            selectedListId = null
+            saveAndRender()
+        })
+    })
+    }
+
+
     function clearElement(element) {
         while (element.firstChild) {
             element.removeChild(element.firstChild)
         }
     }
     render()
-
