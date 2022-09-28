@@ -28,6 +28,16 @@
         saveAndRender()
     })
 
+    taskContainer.addEventListener('click', e => {
+        if (e.target.tagName.toLowerCase() === 'input') {
+            const selectedList = lists.find(list => list.id === selectedListId)
+            //what this is doing is searching the current task and comparing it to the checkbox
+            const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
+            selectedTask.complete = e.target.checked
+            save()
+        }
+    })
+
 
    // Here is the button function, it also the page from refreshing when
    // the button is clicked
@@ -58,7 +68,7 @@
 
 
     function createList(name) {
-       return {id: Date.now().toString(), name: name, tasks: [{}] }
+       return {id: Date.now().toString(), name: name, tasks: [] }
     }
 
     //This function creates the task on the left colum in conjunction with the above event listener.
@@ -84,11 +94,11 @@
         renderLists()
 
         const selectedList = lists.find(list => list.id === selectedListId)
-        if (selectedListId == null) {
-            todoContainer.style.display = 'none'
+        if (selectedListId === null) {
+            todoContainer.style.visibility = 'hidden'
         } else {
             clearElement(taskContainer)
-            todoContainer.style.display = ''
+            todoContainer.style.visibility = 'visible'
             listTitle.innerText = selectedList.name
             renderTasks(selectedList)
         }
