@@ -52,15 +52,14 @@
                 <div class="col-8 pt-2" id="todoContainer">
                   <!-- current todo list name goes here -->
                   <!-- current todo list goes here -->
-                  <h1 id="listTitle">List Title Here</h1>
+                  <h1 id="listTitle"></h1>
                   <hr/>
+                  <form id="taskForm" class="input-group mb-3">
+                    <input id="taskInput" type="text" class="form-control" placeholder="New Todo Item"  aria-describedby="button-addon2">
+                    <button class="btn btn-dark" type="submit" id="button-addon2">+</button>
+                  </form>
                   <div class="tasks" id="tasks">
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="New Todo Item"  aria-describedby="button-addon2">
-                      <button class="btn btn-dark" type="button" id="button-addon2">+</button>
-                    </div>
-
-                    <ul class="list-group">
+                    <!-- <ul class="list-group">
                       <li class="list-group-item">
                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
                         First checkbox
@@ -81,7 +80,7 @@
                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
                         Fifth checkbox
                       </li>
-                  </ul>
+                  </ul> -->
                   </div>
                 </div>
               </div>

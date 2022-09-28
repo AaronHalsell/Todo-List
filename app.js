@@ -5,6 +5,8 @@
     const todoContainer = document.querySelector('#todoContainer')
     const listTitle = document.querySelector('#listTitle')
     const taskContainer = document.querySelector('#tasks')
+    const taskForm = document.querySelector('#taskForm')
+    const taskInput = document.querySelector('#taskInput')
 
     // we will be using local storage, this key will store the input data in the user's browser so when they
     // refresh the page it will still be up.
@@ -21,7 +23,7 @@
 
     // Adding an event listener to the entire container, so that anytime we click on a list it will become "active"
     listContainer.addEventListener('click', e => {
-        if (e.target.tagName.toLowerCase() === 'li'|| e.target.tagName.toLowercase() === 'span')
+        if (e.target.tagName.toLowerCase() === 'li')
         selectedListId = e.target.dataset.listId
         saveAndRender()
     })
@@ -31,10 +33,8 @@
    // the button is clicked
    listForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
     // Here we are storing the value of the form after the user clicks the button
     const listVal = listInput.value;
-
     // if the user leaves the form blank we return with nothing 
     // if filled out we will call the render function and push the HTML so it displays on the left column
     if (!listVal) return
@@ -44,9 +44,29 @@
         saveAndRender()
     })
 
+
+    taskForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const taskVal = taskInput.value;
+        if (taskVal == null || taskVal === '') return
+            const task = createTask(taskVal)
+            taskInput.value = null
+            const selectedList = lists.find(list => list.id === selectedListId)
+            selectedList.tasks.push(task)
+            saveAndRender()
+        })
+
+
     function createList(name) {
-       return {id: Date.now().toString(), name: name, tasks: [] }
+       return {id: Date.now().toString(), name: name, tasks: [{}] }
     }
+
+    //This function creates the task on the left colum in conjunction with the above event listener.
+    // it is set to complete false so all new tasks will by default not be completed
+    function createTask(name) {
+        return {id: Date.now().toString(), name: name, complete: false }
+     }
+ 
 
     //these functions will save our list to the local storage
     function save() {
@@ -65,11 +85,11 @@
 
         const selectedList = lists.find(list => list.id === selectedListId)
         if (selectedListId == null) {
-            todoContainer.style.visibility = 'hidden'
+            todoContainer.style.display = 'none'
         } else {
-            todoContainer.style.visibility = ''
-            listTitle.innerText = selectedList.name
             clearElement(taskContainer)
+            todoContainer.style.display = ''
+            listTitle.innerText = selectedList.name
             renderTasks(selectedList)
         }
     }
@@ -77,7 +97,28 @@
     //this function will be used to render the right column list of Tasks
     function renderTasks(selectedList) {
         selectedList.tasks.forEach (task => {
-            
+            const taskElement = document.createElement('ul')
+            taskElement.classList.add("list-group")
+
+            const taskItem = document.createElement('li')
+            taskItem.classList.add("list-group-item")
+
+            //Adding Checkbox
+            const checkbox = document.createElement('input')
+            checkbox.setAttribute('type', 'checkbox')
+            checkbox.classList.add('form-check-input', 'me-2')
+            checkbox.id = task.id
+            checkbox.checked = task.complete
+
+            // Creating a list name as a span so that we can append it without overriding
+            const taskName = document.createElement('span')
+            taskName.innerHTML= `${task.name}`
+
+            // Appending all these elements to our HTML Container
+            taskContainer.appendChild(taskElement)
+            taskElement.appendChild(taskItem)
+            taskItem.appendChild(checkbox)
+            taskItem.appendChild(taskName)
         })
     }
 
