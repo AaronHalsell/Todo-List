@@ -156,15 +156,19 @@
         listDelete.classList.add("badge", "bg-dark", "rounded-pill")
         listDelete.innerHTML = `<i class="bi bi-trash"></i>`
 
-        if (list.id === selectedListId) {
-            listElement.classList.add('active')
-        }
-
         //appending li and button to container
         listContainer.appendChild(listElement)
         listElement.appendChild(listActions)
         // listActions.appendChild(listEdit)
         listActions.appendChild(listDelete)
+
+        if (list.id === selectedListId) {
+            listElement.classList.add('active')
+            listDelete.style.visibility = 'visible'
+        }
+        else {
+            listDelete.style.visibility = 'hidden'
+        }
 
         //creating an EventListener for the edit action
         // listEdit.addEventListener('click', () => {
