@@ -10,3 +10,9 @@ nav i {
 .active {
     background-color: gray;
 }
+
+.listTest {
+    opacity: 1;
+    -webkit-transition: opacity 1000ms linear;
+    transition: opacity 1000ms linear;
+}

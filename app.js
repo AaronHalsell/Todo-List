@@ -96,7 +96,7 @@
         const selectedList = lists.find(list => list.id === selectedListId)
         if (selectedListId === null) {
             todoContainer.style.visibility = 'hidden'
-        } else {
+        } else if (selectedListId !== null) {
             clearElement(taskContainer)
             todoContainer.style.visibility = 'visible'
             listTitle.innerText = selectedList.name
@@ -124,22 +124,33 @@
             const taskName = document.createElement('span')
             taskName.innerHTML= `${task.name}`
 
+            const taskDelete = document.createElement('i')
+            taskDelete.classList.add('bi', 'bi-trash')
+
             // Appending all these elements to our HTML Container
             taskContainer.appendChild(taskElement)
             taskElement.appendChild(taskItem)
             taskItem.appendChild(checkbox)
             taskItem.appendChild(taskName)
+            taskItem.appendChild(taskDelete)
+
+            taskDelete.addEventListener('click', e => {
+                const taskParent = e.target.parentElement
+                const id = taskParent.querySelector('input').id
+                selectedList.tasks = selectedList.tasks.filter(t => t.id !== id)
+                taskParent.remove()
+            })
         })
     }
 
     //renders the new list's HTML and classes in the left column
     //this clears everything and then rerenders it all, so it will always change the class
-    function renderLists() {
+    async function renderLists() {
     lists.forEach (list => {
         //creating the li item
         const listElement = document.createElement('li')
         listElement.dataset.listId = list.id
-        listElement.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center")
+        listElement.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", "listTest", 'animated', 'fadeOutRight')
         listElement.innerHTML = `${list.name}`
 
         // Creating a container for my buttons
@@ -164,11 +175,11 @@
 
         if (list.id === selectedListId) {
             listElement.classList.add('active')
-            listDelete.style.visibility = 'visible'
+            // listDelete.style.visibility = 'visible'
         }
-        else {
-            listDelete.style.visibility = 'hidden'
-        }
+        // else {
+        //     listDelete.style.visibility = 'hidden'
+        // }
 
         //creating an EventListener for the edit action
         // listEdit.addEventListener('click', () => {
@@ -176,18 +187,38 @@
         //     listElement.focus();
         // })
 
+        // listDelete.addEventListener('click', e => {
+        //     lists = lists.filter(list => list.id !== selectedListId)
+        //     listElement.classList.add("animated", "animate__fadeOut")
+        //     selectedListId = null
+        //     setTimeout(render, 650)
+        //     saveAndRender()
+        // })
+
         listDelete.addEventListener('click', e => {
-            lists = lists.filter(list => list.id !== selectedListId)
+            const listParent = e.target.parentElement
+            const id = list.id
+            lists = lists.filter(l => l.id !== id)
+            // console.log('before')
+            // await wait(1000)
+            // console.log('after');
             selectedListId = null
-            saveAndRender()
+            listParent.remove()
         })
     })
     }
-
 
     function clearElement(element) {
         while (element.firstChild) {
             element.removeChild(element.firstChild)
         }
+    }
+
+    function wait(time){
+        return new Promise(resolve => {
+            setTimeout(()=>{
+                resolve()
+            }, time)
+        })
     }
     render()
