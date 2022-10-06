@@ -7,6 +7,7 @@
     const taskContainer = document.querySelector('#tasks')
     const taskForm = document.querySelector('#taskForm')
     const taskInput = document.querySelector('#taskInput')
+    const taskClear = document.querySelector('#taskClear')
 
     // we will be using local storage, this key will store the input data in the user's browser so when they
     // refresh the page it will still be up.
@@ -36,6 +37,14 @@
             selectedTask.complete = e.target.checked
             save()
         }
+    })
+
+    //basically once this button is clicked we are going to filter through all the checked tasks
+    //and we're only going to keep the ones that aren't checked
+    taskClear.addEventListener ('click', e => {
+        const selectedList = lists.find(list => list.id === selectedListId)
+        selectedList.tasks = selectedList.tasks.filter(task => !task.complete)
+        saveAndRender()
     })
 
 
