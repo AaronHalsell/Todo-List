@@ -1,3 +1,65 @@
+input, li, .list-group-item, .form-control {
+  background-color: #37456C;
+  color: #fff;
+  border: none;
+}
+
+.list-form {
+  background-color: #202536;
+  border-bottom: rgba(184, 45, 40, 0.3) 1px solid;
+}
+
+.list-form:focus {
+  background-color: #202536;
+}
+
+.form-control:focus {
+  color: #fff;
+  border-bottom: #B82D28 2px solid;
+  box-shadow: none;
+}
+
+.form-control::placeholder {
+  color: #fff;
+}
+
+.form-control:focus::placeholder {
+  color: transparent;
+}
+
+.list-group-item.active {
+  background-color: #2C3B5C;
+  border-color: #2C3B5C;
+  box-shadow: rgba(184, 45, 40, 0.3) 0px 0px 0px 3px;
+}
+
+.form-check-input:checked {
+  background-color: #B82D28;
+  border-color: #B82D28;
+}
+
+.task-form {
+  background-color: #2C3B5C;
+  border-bottom: rgba(255, 255, 255, 0.3) 1px solid;
+}
+
+.task-form:focus {
+  background-color: #2C3B5C;
+}
+
+.form-check-input {
+  background-color: #37456C;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.form-check-input:focus {
+  box-shadow: rgba(108, 27, 29, 0.3) 0px 0px 0px 3px;
+}
+
+* {
+  border-radius: 0 !important;
+}
+
 body, nav i, .navbar-brand {
   color: #fff;
 }
@@ -14,36 +76,6 @@ body {
 .col-left {
   height: 94vh;
   background-color: #202536;
-}
-
-input, li, .list-group-item, .form-control {
-  background-color: #37456C;
-  color: #fff;
-  border: none;
-}
-
-.form-control:focus {
-  background-color: #37456C;
-  color: #fff;
-  box-shadow: rgba(184, 45, 40, 0.3) 0px 0px 0px 3px;
-}
-
-.form-control::placeholder {
-  color: #fff;
-}
-
-.form-control:focus::placeholder {
-  color: transparent;
-}
-
-.list-group-item.active {
-  background-color: #B82D28;
-  border-color: #B82D28;
-}
-
-.form-check-input:checked {
-  background-color: #B82D28;
-  border-color: #B82D28;
 }
 
 .active {

@@ -28,10 +28,10 @@
            
             <div class="container-fluid">
               <div class="row">
-                <div class="col-3 col-left pt-3">
+                <div class="col-4 col-left pt-3">
                   <!-- list of todo lists go here -->
                     <form id="new-list-form" class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Enter List Name" aria-describedby="button-addon2" id="new-list-input">
+                      <input type="text" class="form-control list-form" placeholder="Enter List Name" aria-describedby="button-addon2" id="new-list-input">
                       <button class="btn" type="submit" id="new-list-submit"">+</button>
                     </form>
                     <ul class="list-group" id="lists">
@@ -40,17 +40,20 @@
            
                 <div class="col-8 col-right pt-2" id="todoContainer">
                   <!-- current todo list name goes here -->
-                  <!-- current todo list goes here -->
-                  <h1 id="listTitle"></h1>
-                  <hr/>
+                  <div class="text-xl-center">
+                    <h1 id="listTitle"></h1>
+                  </div>
+                  <div class="col-xl-8 col-lg-12 mx-auto ">
                   <form id="taskForm" class="input-group mb-3">
-                    <input id="taskInput" type="text" class="form-control" placeholder="New Todo Item"  aria-describedby="button-addon2">
+                    <input id="taskInput" type="text" class="form-control task-form" placeholder="New Todo Item"  aria-describedby="button-addon2">
                     <button class="btn" type="submit" id="button-addon2">+</button>
                   </form>
                   <div class="tasks" id="tasks">
+                    <!-- current todo list goes here -->
                   </div>
                   <button class="btn delete" id="taskClear">Clear completed tasks</button>
                 </div>
+              </div>
               </div>
             </div>
            </div>

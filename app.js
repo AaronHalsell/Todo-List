@@ -113,7 +113,7 @@
             taskElement.classList.add("list-group")
 
             const taskItem = document.createElement('li')
-            taskItem.classList.add("list-group-item")
+            taskItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", 'my-1', 'py-4', 'px-5')
 
             //Adding Checkbox
             const checkbox = document.createElement('input')
@@ -182,17 +182,12 @@
         //creating the li item
         const listElement = document.createElement('li')
         listElement.dataset.listId = list.id
-        listElement.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", "listTest", 'animated', 'fadeOutRight')
+        listElement.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", "listTest", 'animated', 'my-1', 'py-4', 'px-5')
         listElement.innerHTML = `${list.name}`
 
         // Creating a container for my buttons
         const listActions = document.createElement('div')
         listActions.classList.add("listActions")
-
-        // Creating the Edit Button
-        // const listEdit = document.createElement('span')
-        // listEdit.classList.add("badge", "bg-dark", "rounded-pill", "me-1")
-        // listEdit.innerHTML = `<i class="bi bi-pencil"></i>`
 
         // Creating the Delete Button
         const listDelete = document.createElement('span')
@@ -209,24 +204,6 @@
             listElement.classList.add('active')
             // listDelete.style.visibility = 'visible'
         }
-
-        // else {
-        //     listDelete.style.visibility = 'hidden'
-        // }
-
-        //creating an EventListener for the edit action
-        // listEdit.addEventListener('click', () => {
-        //     listElement.removeAttribute("readonly")
-        //     listElement.focus();
-        // })
-
-        // listDelete.addEventListener('click', e => {
-        //     lists = lists.filter(list => list.id !== selectedListId)
-        //     listElement.classList.add("animated", "animate__fadeOut")
-        //     selectedListId = null
-        //     setTimeout(render, 650)
-        //     saveAndRender()
-        // })
 
         listDelete.addEventListener('click', e => {
             const listParent = e.target.parentElement

@@ -1,0 +1,21 @@
+@import "_variables.scss";
+
+
+.task-form {
+    background-color: $primary-bg-color;
+    border-bottom:rgba(255, 255, 255, 0.3) 1px solid;
+
+}
+
+.task-form:focus {
+    background-color: $primary-bg-color;
+}
+
+.form-check-input {
+    background-color: $input-color;
+    border: 1px solid rgba(255,255,255,.3);
+}
+
+.form-check-input:focus {
+    box-shadow: rgba(108, 27, 29, 0.3) 0px 0px 0px 3px;
+}
