@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="outer "> 
-            <nav class="navbar navbar-dark bg-dark">
+            <nav class="navbar">
               <div class="container-fluid">
                 <a class="navbar-brand">Todo List</a>
                 <span>
@@ -32,20 +32,20 @@
                   <!-- list of todo lists go here -->
                     <form id="new-list-form" class="input-group mb-3">
                       <input type="text" class="form-control" placeholder="Enter List Name" aria-describedby="button-addon2" id="new-list-input">
-                      <button class="btn btn-dark" type="submit" id="new-list-submit"">+</button>
+                      <button class="btn" type="submit" id="new-list-submit"">+</button>
                     </form>
                     <ul class="list-group" id="lists">
                     </ul>
                 </div>
            
-                <div class="col-8 pt-2" id="todoContainer">
+                <div class="col-8 col-right pt-2" id="todoContainer">
                   <!-- current todo list name goes here -->
                   <!-- current todo list goes here -->
                   <h1 id="listTitle"></h1>
                   <hr/>
                   <form id="taskForm" class="input-group mb-3">
                     <input id="taskInput" type="text" class="form-control" placeholder="New Todo Item"  aria-describedby="button-addon2">
-                    <button class="btn btn-dark" type="submit" id="button-addon2">+</button>
+                    <button class="btn" type="submit" id="button-addon2">+</button>
                   </form>
                   <div class="tasks" id="tasks">
                   </div>

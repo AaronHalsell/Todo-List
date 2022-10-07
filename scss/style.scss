@@ -1,0 +1,64 @@
+@import "_variables.scss";
+
+
+
+body, nav i, .navbar-brand, {
+    color: $font-color;
+}
+
+body {
+    background-color: $primary-bg-color;
+}
+
+.navbar, .btn, .badge {
+    background-color: $primary-highlight;
+    color: $font-color;
+}
+
+
+.col-left {
+    height: 94vh;
+    background-color: $secondary-bg-color;
+}
+
+input, li, .list-group-item, .form-control {
+    background-color: $input-color;
+    color: $font-color;
+    border: none;
+}
+
+.form-control:focus {
+    background-color: $input-color;
+    color: $font-color;
+    box-shadow: rgba(184, 45, 40, 0.3) 0px 0px 0px 3px;
+}
+
+.form-control::placeholder {
+    color: $font-color;
+}
+
+.form-control:focus::placeholder {
+    color: transparent;
+}
+
+
+.list-group-item.active {
+    background-color: $secondary-highlight;
+    border-color: $secondary-highlight;
+}
+
+.form-check-input:checked {
+    background-color: $secondary-highlight;
+    border-color: $secondary-highlight;
+}
+
+.active {
+    background-color: $secondary-highlight;
+}
+
+.listTest {
+    opacity: 1;
+    -webkit-transition: opacity 1000ms linear;
+    transition: opacity 1000ms linear;
+}
+

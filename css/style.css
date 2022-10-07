@@ -1,18 +1,59 @@
-nav i {
-    color:#fff;
+body, nav i, .navbar-brand {
+  color: #fff;
+}
+
+body {
+  background-color: #2C3B5C;
+}
+
+.navbar, .btn, .badge {
+  background-color: #6C1B1D;
+  color: #fff;
 }
 
 .col-left {
-    height: 94vh;
-    background-color: #F4F4F4;
+  height: 94vh;
+  background-color: #202536;
+}
+
+input, li, .list-group-item, .form-control {
+  background-color: #37456C;
+  color: #fff;
+  border: none;
+}
+
+.form-control:focus {
+  background-color: #37456C;
+  color: #fff;
+  box-shadow: rgba(184, 45, 40, 0.3) 0px 0px 0px 3px;
+}
+
+.form-control::placeholder {
+  color: #fff;
+}
+
+.form-control:focus::placeholder {
+  color: transparent;
+}
+
+.list-group-item.active {
+  background-color: #B82D28;
+  border-color: #B82D28;
+}
+
+.form-check-input:checked {
+  background-color: #B82D28;
+  border-color: #B82D28;
 }
 
 .active {
-    background-color: gray;
+  background-color: #B82D28;
 }
 
 .listTest {
-    opacity: 1;
-    -webkit-transition: opacity 1000ms linear;
-    transition: opacity 1000ms linear;
+  opacity: 1;
+  -webkit-transition: opacity 1000ms linear;
+  transition: opacity 1000ms linear;
 }
+
+/*# sourceMappingURL=style.css.map */

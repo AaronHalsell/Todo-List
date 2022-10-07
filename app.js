@@ -29,23 +29,6 @@
         saveAndRender()
     })
 
-    taskContainer.addEventListener('click', e => {
-        if (e.target.tagName.toLowerCase() === 'input') {
-            const selectedList = lists.find(list => list.id === selectedListId)
-            //what this is doing is searching the current task and comparing it to the checkbox
-            const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
-            selectedTask.complete = e.target.checked
-            save()
-        }
-    })
-
-    //basically once this button is clicked we are going to filter through all the checked tasks
-    //and we're only going to keep the ones that aren't checked
-    taskClear.addEventListener ('click', e => {
-        const selectedList = lists.find(list => list.id === selectedListId)
-        selectedList.tasks = selectedList.tasks.filter(task => !task.complete)
-        saveAndRender()
-    })
 
 
    // Here is the button function, it also the page from refreshing when
@@ -85,6 +68,16 @@
     function createTask(name) {
         return {id: Date.now().toString(), name: name, complete: false }
      }
+
+     taskContainer.addEventListener('click', e => {
+        if (e.target.type === 'checkbox' ) {
+            const selectedList = lists.find(list => list.id === selectedListId)
+            //what this is doing is searching the current task and comparing it to the checkbox
+            const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
+            selectedTask.complete = e.target.checked
+            save()
+        }
+    })
  
 
     //these functions will save our list to the local storage
@@ -130,24 +123,54 @@
             checkbox.checked = task.complete
 
             // Creating a list name as a span so that we can append it without overriding
-            const taskName = document.createElement('span')
-            taskName.innerHTML= `${task.name}`
+            const taskName = document.createElement('input')
+            taskName.type = "text";
+            taskName.value = task.name
+            taskName.setAttribute("readonly", "readonly")
 
             const taskDelete = document.createElement('i')
             taskDelete.classList.add('bi', 'bi-trash')
+
+            const taskEdit = document.createElement('i')
+            taskEdit.classList.add('bi', 'bi-pen')
 
             // Appending all these elements to our HTML Container
             taskContainer.appendChild(taskElement)
             taskElement.appendChild(taskItem)
             taskItem.appendChild(checkbox)
             taskItem.appendChild(taskName)
+            taskItem.appendChild(taskEdit)
             taskItem.appendChild(taskDelete)
+
+
+
+            taskEdit.addEventListener('click', () => {
+                if (taskEdit.classList.contains('bi-pen')) {
+                    taskName.removeAttribute("readonly")
+                    taskName.focus();
+                    taskEdit.classList.remove('bi-pen')
+                    taskEdit.classList.add('bi-save2')
+                } 
+                else {
+                    taskName.setAttribute('readonly', 'readonly');
+                    taskEdit.classList.remove('bi-save2');
+                    taskEdit.classList.add('bi-pen');
+                }
+            });
 
             taskDelete.addEventListener('click', e => {
                 const taskParent = e.target.parentElement
                 const id = taskParent.querySelector('input').id
                 selectedList.tasks = selectedList.tasks.filter(t => t.id !== id)
                 taskParent.remove()
+            })
+
+                //basically once this button is clicked we are going to filter through all the checked tasks
+                 //and we're only going to keep the ones that aren't checked
+            taskClear.addEventListener ('click', e => {
+                const selectedList = lists.find(list => list.id === selectedListId)
+                selectedList.tasks = selectedList.tasks.filter(task => !task.complete)
+                saveAndRender()
             })
         })
     }
@@ -173,7 +196,7 @@
 
         // Creating the Delete Button
         const listDelete = document.createElement('span')
-        listDelete.classList.add("badge", "bg-dark", "rounded-pill")
+        listDelete.classList.add("badge", "rounded-pill")
         listDelete.innerHTML = `<i class="bi bi-trash"></i>`
 
         //appending li and button to container
@@ -186,6 +209,7 @@
             listElement.classList.add('active')
             // listDelete.style.visibility = 'visible'
         }
+
         // else {
         //     listDelete.style.visibility = 'hidden'
         // }
