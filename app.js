@@ -152,7 +152,7 @@
             taskCheck.appendChild(taskName)
             taskItem.appendChild(taskActions)
             taskActions.appendChild(taskEdit)
-            taskItem.appendChild(taskDelete)
+            taskActions.appendChild(taskDelete)
 
             taskEdit.addEventListener('click', () => {
                 if (taskEdit.classList.contains('bi-pen')) {
@@ -165,28 +165,31 @@
                     taskName.setAttribute('readonly', 'readonly');
                     taskEdit.classList.remove('bi-save2');
                     taskEdit.classList.add('bi-pen');
+                    const selectedList = lists.find(list => list.id === selectedListId)
+                    const selectedTask = selectedList.tasks.find(_task => _task.id === task.id)
+                    selectedTask.name = taskName.value
+                    saveAndRender()            
                 }
             });
 
-            // taskCheck.addEventListener('click', () => {
-            //     if (!task.complete) {
-            //         task.complete;
-            //         saveAndRender()
-            //     }
-            //     else if (task.complete) {
-            //         !task.complete;
-            //         saveAndRender
-            //     }
-            //     // else if (taskName.classList.contains('bi-save2')) {
-            //     //     checkbox.checked = false;
-            //     // }
-            // })
+            taskName.addEventListener('keypress', e => {
+                if (e.key === 'Enter') {
+                    taskName.setAttribute('readonly', 'readonly');
+                    taskEdit.classList.remove('bi-save2');
+                    taskEdit.classList.add('bi-pen');
+                    const selectedList = lists.find(list => list.id === selectedListId)
+                    const selectedTask = selectedList.tasks.find(_task => _task.id === task.id)
+                    selectedTask.name = taskName.value
+                    saveAndRender()   
+                }
+            })
 
             taskDelete.addEventListener('click', e => {
                 const taskParent = e.target.parentElement
-                const id = taskParent.querySelector('input').id
+                const taskGrandParent = taskParent.parentElement
+                const id = taskGrandParent.querySelector('input').id
                 selectedList.tasks = selectedList.tasks.filter(t => t.id !== id)
-                taskParent.remove()
+                taskGrandParent.remove()
             })
 
                 //basically once this button is clicked we are going to filter through all the checked tasks
@@ -206,7 +209,7 @@
         //creating the li item
         const listElement = document.createElement('li')
         listElement.dataset.listId = list.id
-        listElement.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", "listTest", 'animated', 'my-2', 'py-4', 'px-5')
+        listElement.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", "listItem", 'animated', 'my-2', 'py-4', 'px-5')
         listElement.innerHTML = `${list.name}`
 
         // Creating a container for my buttons

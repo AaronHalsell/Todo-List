@@ -39,13 +39,16 @@ input, li, .list-group-item, .form-control {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-.list-group-item:hover {
+.listItem:hover {
   cursor: pointer;
+}
+
+.list-group-item:hover {
   bottom: 3px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-.list-group-item.active:hover {
+.col-left .list-group-item.active:hover {
   cursor: pointer;
   bottom: 3px;
   bottom: 0;
@@ -54,13 +57,17 @@ input, li, .list-group-item, .form-control {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-.listDelete {
+.listDelete, .bi-trash {
   color: #B82D28;
 }
 
-.listDelete:hover {
-  bottom: 5px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+.bi-trash, .bi-save2, .bi-pen {
+  padding: 5px 10px;
+}
+
+.bi-trash:hover {
+  color: #fff;
+  background-color: #B82D28;
 }
 
 .task-form {
@@ -81,12 +88,16 @@ input, li, .list-group-item, .form-control {
   box-shadow: rgba(108, 27, 29, 0.3) 0px 0px 0px 3px;
 }
 
-.taskName:hover {
+[type=checkbox]:hover, .bi-trash:hover, .bi-save2:hover, .bi-pen:hover {
+  position: relative;
+  bottom: 3px;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-[type=checkbox]:hover {
-  cursor: pointer;
+.bi-save2:hover, .bi-pen:hover {
+  background-color: #fff;
+  color: #202536;
 }
 
 .form-check-input:checked {
@@ -119,6 +130,15 @@ body {
 .navbar, .btn, .badge {
   background-color: #6C1B1D;
   color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.btn:hover {
+  position: relative;
+  bottom: 3px;
+  background-color: #6C1B1D !important;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .col-left {

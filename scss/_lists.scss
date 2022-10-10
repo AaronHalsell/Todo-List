@@ -44,13 +44,16 @@ input, li, .list-group-item, .form-control {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-.list-group-item:hover {
+.listItem:hover {
     cursor: pointer;
+}
+
+.list-group-item:hover {
     bottom: 3px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-.list-group-item.active:hover {
+.col-left .list-group-item.active:hover {
     cursor: pointer;
     bottom: 3px;
     bottom: 0;
@@ -59,11 +62,15 @@ input, li, .list-group-item, .form-control {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-.listDelete {
+.listDelete, .bi-trash {
     color: $secondary-highlight;
 }
 
-.listDelete:hover {
-    bottom: 5px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+.bi-trash, .bi-save2, .bi-pen {
+    padding: 5px 10px;
+}
+
+.bi-trash:hover {
+    color: $font-color;
+    background-color: $secondary-highlight;
 }

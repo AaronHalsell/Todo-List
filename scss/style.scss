@@ -19,6 +19,15 @@ $baseBorderRadius: 0;
 .navbar, .btn, .badge {
     background-color: $primary-highlight;
     color: $font-color;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.btn:hover {
+    position: relative;
+    bottom: 3px;
+    background-color: $primary-highlight !important;
+    color: $font-color;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .col-left {

@@ -19,12 +19,17 @@
     box-shadow: rgba(108, 27, 29, 0.3) 0px 0px 0px 3px;
 }
 
-.taskName:hover {
+[type="checkbox"]:hover, .bi-trash:hover, .bi-save2:hover, .bi-pen:hover {
+    position: relative;
+    bottom: 3px;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
 }
 
-[type="checkbox"]:hover {
-    cursor: pointer;
+.bi-save2:hover, .bi-pen:hover {
+    background-color: $font-color;
+    color: $secondary-bg-color;
 }
 
 .form-check-input:checked {
