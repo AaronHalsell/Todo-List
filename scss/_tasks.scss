@@ -4,7 +4,6 @@
 .task-form {
     background-color: $primary-bg-color;
     border-bottom:rgba(255, 255, 255, 0.3) 1px solid;
-
 }
 
 .task-form:focus {
@@ -18,4 +17,27 @@
 
 .form-check-input:focus {
     box-shadow: rgba(108, 27, 29, 0.3) 0px 0px 0px 3px;
+}
+
+.taskName:hover {
+    cursor: pointer;
+}
+
+[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: $secondary-highlight;
+    border-color: $secondary-highlight;
+}
+
+[type="checkbox"]:checked + .taskName {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.list-group-item:has([type="checkbox"]:checked) {
+    bottom: 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }

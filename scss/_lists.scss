@@ -6,6 +6,12 @@ input, li, .list-group-item, .form-control {
     border: none;
 }
 
+.list-group-item {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    font-size: $primary-font-size;
+    transition: width 1s ease;
+}
+
 .list-form {
     background-color: $secondary-bg-color;
     border-bottom:rgba(184, 45, 40, 0.3) 1px solid;
@@ -32,14 +38,32 @@ input, li, .list-group-item, .form-control {
     color: transparent;
 }
 
-
 .list-group-item.active {
     background-color: $primary-bg-color;
     border-color: $primary-bg-color;
-    box-shadow: rgba(184, 45, 40, 0.3) 0px 0px 0px 3px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-.form-check-input:checked {
-    background-color: $secondary-highlight;
-    border-color: $secondary-highlight;
+.list-group-item:hover {
+    cursor: pointer;
+    bottom: 3px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.list-group-item.active:hover {
+    cursor: pointer;
+    bottom: 3px;
+    bottom: 0;
+    background-color: $primary-bg-color;
+    border-color: $primary-bg-color;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.listDelete {
+    color: $secondary-highlight;
+}
+
+.listDelete:hover {
+    bottom: 5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }

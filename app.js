@@ -113,7 +113,11 @@
             taskElement.classList.add("list-group")
 
             const taskItem = document.createElement('li')
-            taskItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", 'my-1', 'py-4', 'px-5')
+            taskItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", 'my-2', 'py-4', 'px-5')
+
+            //Container for the checkbox and name
+            const taskCheck = document.createElement('div')
+            taskCheck.classList.add("taskCheck")
 
             //Adding Checkbox
             const checkbox = document.createElement('input')
@@ -124,9 +128,15 @@
 
             // Creating a list name as a span so that we can append it without overriding
             const taskName = document.createElement('input')
+            taskName.classList.add('taskName')
             taskName.type = "text";
+            taskName.addEventListener("focus", function () {
+                this.style.outline = "none";  
+              });
             taskName.value = task.name
             taskName.setAttribute("readonly", "readonly")
+
+            const taskActions = document.createElement('div')
 
             const taskDelete = document.createElement('i')
             taskDelete.classList.add('bi', 'bi-trash')
@@ -137,12 +147,12 @@
             // Appending all these elements to our HTML Container
             taskContainer.appendChild(taskElement)
             taskElement.appendChild(taskItem)
-            taskItem.appendChild(checkbox)
-            taskItem.appendChild(taskName)
-            taskItem.appendChild(taskEdit)
+            taskItem.appendChild(taskCheck)
+            taskCheck.appendChild(checkbox)
+            taskCheck.appendChild(taskName)
+            taskItem.appendChild(taskActions)
+            taskActions.appendChild(taskEdit)
             taskItem.appendChild(taskDelete)
-
-
 
             taskEdit.addEventListener('click', () => {
                 if (taskEdit.classList.contains('bi-pen')) {
@@ -157,6 +167,20 @@
                     taskEdit.classList.add('bi-pen');
                 }
             });
+
+            // taskCheck.addEventListener('click', () => {
+            //     if (!task.complete) {
+            //         task.complete;
+            //         saveAndRender()
+            //     }
+            //     else if (task.complete) {
+            //         !task.complete;
+            //         saveAndRender
+            //     }
+            //     // else if (taskName.classList.contains('bi-save2')) {
+            //     //     checkbox.checked = false;
+            //     // }
+            // })
 
             taskDelete.addEventListener('click', e => {
                 const taskParent = e.target.parentElement
@@ -182,7 +206,7 @@
         //creating the li item
         const listElement = document.createElement('li')
         listElement.dataset.listId = list.id
-        listElement.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", "listTest", 'animated', 'my-1', 'py-4', 'px-5')
+        listElement.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center", "listTest", 'animated', 'my-2', 'py-4', 'px-5')
         listElement.innerHTML = `${list.name}`
 
         // Creating a container for my buttons
@@ -191,7 +215,7 @@
 
         // Creating the Delete Button
         const listDelete = document.createElement('span')
-        listDelete.classList.add("badge", "rounded-pill")
+        listDelete.classList.add("listDelete")
         listDelete.innerHTML = `<i class="bi bi-trash"></i>`
 
         //appending li and button to container
