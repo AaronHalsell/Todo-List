@@ -29,8 +29,6 @@
         saveAndRender()
     })
 
-
-
    // Here is the button function, it also the page from refreshing when
    // the button is clicked
    listForm.addEventListener('submit', (e) => {
